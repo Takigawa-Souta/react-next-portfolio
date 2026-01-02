@@ -1,19 +1,52 @@
 :root {
   --font-mono:ui-monospace,Menlo,Monaco,"Cascadia Mono","Swgoe UI Mono","Roboto Mono","Oxygen Mono","Ubuntu Monospace","Source Code Pro","Fira Mono","Droid Sans Mono","Courier New",monospace;
-  --color-text-main: #333;
-  --color-text-sub: #999;
-  --color-text-unpainted: #fff;
-  --color-text-error: #f33;
-  --color-bg-main: #fff;
-  --color-bg-sub: #f3f3f3;
-  --color-bg-code: #fafafa;
-  --color-bg-painted: #333;
-  --color-border-dark: #333;
-  --color-border: #ddd;
-  --color-border-light: #f3f3f3;
-  --color-current: #eee;
-  --color-button-primary: #333;
   --border-radius: 4px;
+}
+
+/* ライトモード */
+[data-theme="light"] {
+  --color-text-main: #3e2723;
+  --color-text-sub: #6d5d4b;
+  --color-text-unpainted: #faf8f3;
+  --color-text-error: #c62828;
+  --color-bg-main: #faf8f3;
+  --color-bg-sub: #f5f1e8;
+  --color-bg-code: #f9f6f0;
+  --color-bg-painted: #8b7355;
+  --color-border-dark: #6d5d4b;
+  --color-border: #e0d5c7;
+  --color-border-light: #ede8dd;
+  --color-current: #f5f1e8;
+  --color-button-primary: #8b7355;
+  --color-accent: #a0826d;
+  --color-bookmark: #9c4221;
+  --box-shadow-main: rgba(62, 39, 35, 0.12);
+  --box-shadow-hover: rgba(62, 39, 35, 0.15);
+  --pattern-color: rgba(109, 93, 75, 0.02);
+  --logo-filter: brightness(0.3) sepia(1) hue-rotate(10deg) saturate(0.8);
+}
+
+/* ダークモード */
+[data-theme="dark"] {
+  --color-text-main: #ffffff;
+  --color-text-sub: #b0b0b0;
+  --color-text-unpainted: #ffffff;
+  --color-text-error: #ff6b6b;
+  --color-bg-main: #1a1a1a;
+  --color-bg-sub: #2d2d2d;
+  --color-bg-code: #242424;
+  --color-bg-painted: #8b7355;
+  --color-border-dark: #555555;
+  --color-border: #3a3a3a;
+  --color-border-light: #2d2d2d;
+  --color-current: #2d2d2d;
+  --color-button-primary: #8b7355;
+  --color-accent: #a0826d;
+  --color-bookmark: #d16a4a;
+  --box-shadow-main: rgba(0, 0, 0, 0.5);
+  --box-shadow-hover: rgba(0, 0, 0, 0.6);
+  --pattern-color: rgba(255, 255, 255, 0.02);
+  --logo-filter: brightness(3) sepia(0);
 }
 
 * {
@@ -25,6 +58,10 @@
 html,
 body {
   max-width: 100vw;
+  background: var(--color-bg-main);
+}
+
+html {
   overflow-x: hidden;
 }
 
@@ -41,7 +78,28 @@ body {
     Meiryo,
     sans-serif;
   color: var(--color-text-main);
-  line-height: 1.8;
+  line-height: 1.9;
+  background: var(--color-bg-main);
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 30px,
+      var(--pattern-color) 30px,
+      var(--pattern-color) 31px
+    );
+  pointer-events: none;
+  z-index: 0;
 }
 
 code {
@@ -51,6 +109,11 @@ code {
 a {
   color: inherit;
   text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+a:hover {
+  opacity: 0.8;
 }
 
 ol,

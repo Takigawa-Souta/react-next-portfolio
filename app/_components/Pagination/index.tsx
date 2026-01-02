@@ -1,5 +1,8 @@
-import { NEWS_LIST_LIMIT } from "@/app/_constants";
+'use client';
+
+import { BLOG_LIST_LIMIT } from "@/app/_constants";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import styles from "./index.module.css";
 
 type Props = {
@@ -11,12 +14,20 @@ type Props = {
 export default function Pagination({
         totalCount,
         current = 1,
-        basePath = "/news",
+        basePath = "/blog",
     }: Props) {
+    const searchParams = useSearchParams();
+    const sortParam = searchParams.get('sort');
+    
     const pages = Array.from(
-        { length: Math.ceil(totalCount / NEWS_LIST_LIMIT) },
+        { length: Math.ceil(totalCount / BLOG_LIST_LIMIT) },
         (_, i) => i + 1
     );
+
+    const buildUrl = (page: number) => {
+        const baseUrl = page === 1 ? basePath : `${basePath}/p/${page}`;
+        return sortParam ? `${baseUrl}?sort=${sortParam}` : baseUrl;
+    };
 
     return (
         <nav>
@@ -24,7 +35,7 @@ export default function Pagination({
                 {pages.map((p) => (
                     <li className={styles.list} key={p}>
                         {current !== p ? (
-                            <Link href={`${basePath}/p/${p}`} className={styles.item}>
+                            <Link href={buildUrl(p)} className={styles.item}>
                                 {p}
                             </Link>
                         ) : (

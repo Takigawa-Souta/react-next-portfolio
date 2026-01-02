@@ -1,0 +1,83 @@
+.listWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bookmarkCard {
+    background: var(--color-bg-sub);
+    border: 2px solid var(--color-border);
+    border-left: 4px solid var(--color-bookmark);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    box-shadow: 0 2px 6px var(--box-shadow-main);
+    transition: all 0.3s ease;
+}
+
+.bookmarkCard:hover {
+    box-shadow: 0 4px 12px var(--box-shadow-hover);
+    transform: translateX(4px);
+}
+
+.bookmarkHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.bookmarkIcon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.bookmarkInfo {
+    flex: 1;
+}
+
+.bookmarkName {
+    font-weight: 600;
+    color: var(--color-text-main);
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.bookmarkDate {
+    font-size: 0.85rem;
+    color: var(--color-text-sub);
+}
+
+.bookmarkMessage {
+    color: var(--color-text-main);
+    line-height: 1.8;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.empty {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--color-bg-sub);
+    border-radius: var(--border-radius);
+    border: 2px dashed var(--color-border);
+}
+
+.empty p {
+    color: var(--color-text-sub);
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+}
+
+.empty p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .bookmarkCard {
+        padding: 20px;
+    }
+
+    .bookmarkCard:hover {
+        transform: translateX(2px);
+    }
+}

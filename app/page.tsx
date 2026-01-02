@@ -1,41 +1,36 @@
 import styles from './page.module.css';
-import Image from "next/image";
-import { getNewsList } from "@/app/_libs/microcms";
-import { TOP_NEWS_LIMIT } from "@/app/_constants";
-import NewsList from "@/app/_components/NewsList";
-import ButtonLink from "@/app/_components/ButtonLink";
+import Link from "next/link";
 
-export const revalidate = 60;
-
-export default async function Home() {
-  const data = await getNewsList({
-    limit: TOP_NEWS_LIMIT,
-  });
-
+export default function Home() {
   return(
-    <>
-      <section className={styles.top}>
-        <div>
-          <h1 className={styles.title}>テクノロジーの力で世界を変える</h1>
-          <p className={styles.description}>私たちは市場をリードしているグローバルテックカンパニーです。</p>
-        </div>
-        <Image
-          className={styles.bgimg}
-          src="/img-mv.jpg"
-          alt=""
-          width={4000}
-          height={1200} 
-          priority
-          sizes="100vw"
-        />
-      </section>
-      <section className={styles.news}>
-        <h2 className={styles.newTitle}>News</h2>
-        <NewsList news={data.contents} />
-        <div className={styles.newsLink}>
-          <ButtonLink href="/news">もっとみる</ButtonLink>
-        </div>
-      </section>
-    </>
+    <div className={styles.bookCover}>
+      <div className={styles.coverContent}>
+        <h1 className={styles.title}>My Portfolio</h1>
+        <p className={styles.subtitle}>知識と経験の記録</p>
+        
+        <nav className={styles.coverNav}>
+          <Link href="/about" className={styles.coverLink}>
+            <span className={styles.linkIcon}>📖</span>
+            <span className={styles.linkText}>自己紹介</span>
+          </Link>
+          <Link href="/blog" className={styles.coverLink}>
+            <span className={styles.linkIcon}>✍️</span>
+            <span className={styles.linkText}>ブログ</span>
+          </Link>
+          <Link href="/portfolio" className={styles.coverLink}>
+            <span className={styles.linkIcon}>💼</span>
+            <span className={styles.linkText}>作品・スキル</span>
+          </Link>
+          <Link href="/bookmarks" className={styles.coverLink}>
+            <span className={styles.linkIcon}>🔖</span>
+            <span className={styles.linkText}>みんなのしおり</span>
+          </Link>
+          <Link href="/contact" className={styles.coverLink}>
+            <span className={styles.linkIcon}>✉️</span>
+            <span className={styles.linkText}>お問い合わせ</span>
+          </Link>
+        </nav>
+      </div>
+    </div>
   );
 }

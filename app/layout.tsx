@@ -3,21 +3,22 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Header from "./_components/Header"
 import Footer from "./_components/Footer";
+import ThemeToggle from "./_components/ThemeToggle";
 
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),
   title: {
-    template: "%s | シンプルなコーポレートサイト",
-    default: "シンプルなコーポレートサイト",
+    template: "%s | ポートフォリオサイト",
+    default: "ポートフォリオサイト",
   },
-  description: "「Next.js+ヘッドレスCMSで始める!かんたん・モダンWebサイト制作入門」で作成されるサイトです。",
+  description: "個人のポートフォリオサイトです。ブログやプロジェクトを紹介しています。",
   openGraph: {
-    title: "シンプルなコーポレートサイト",
-    description: "「Next.js+ヘッドレスCMSで始める!かんたん・モダンWebサイト制作入門」で作成されるサイトです。",
+    title: "ポートフォリオサイト",
+    description: "個人のポートフォリオサイトです。ブログやプロジェクトを紹介しています。",
     images: ["/ogp.png"],
   },
   alternates: {
-    canonical: "http//localhost:3000",
+    canonical: "http://localhost:3000",
   },
 };
 
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="ja">
       <body>
         <Header />
+        <ThemeToggle />
         {children}
         <Footer />
       </body>

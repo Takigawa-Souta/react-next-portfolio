@@ -5,9 +5,10 @@ import type {
     MicroCMSListContent,
 } from "microcms-js-sdk";
 
-export type Member = {
+export type About = {
     name: string;
     position: string;
+    mbti: string;
     profile: string;
     image: MicroCMSImage;
 } & MicroCMSListContent;
@@ -16,12 +17,28 @@ export type Category = {
     name: string;
 } & MicroCMSListContent;
 
-export type News = {
+export type Blog = {
     title: string;
-    description: string;
     content: string;
     thumbnail: MicroCMSImage;
     category: Category;
+} & MicroCMSListContent;
+
+export type Bookmark = {
+    name: string;
+    message: string;
+} & MicroCMSListContent;
+
+export type Personnel = {
+    name: string;
+} & MicroCMSListContent;
+
+export type Portfolio = {
+    title: string;
+    personnel: Personnel;
+    time: string;
+    content: string;
+    image: MicroCMSImage[];
 } & MicroCMSListContent;
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
@@ -37,30 +54,30 @@ const client = createClient({
     apiKey: process.env.MICROCMS_API_KEY,
 });
 
-export const getMembersList = async (queries?: MicroCMSQueries) => {
+export const getAboutList = async (queries?: MicroCMSQueries) => {
     const listData = await client
-        .getList<Member>({
-            endpoint: "members",
+        .getList<About>({
+            endpoint: "about",
             queries,
         });
     return listData;
 };
 
-export const getNewsList = async (queries?: MicroCMSQueries) => {
+export const getBlogsList = async (queries?: MicroCMSQueries) => {
     const listData = await client
-        .getList<News>({
-            endpoint: "news",
+        .getList<Blog>({
+            endpoint: "blogs",
             queries,
         });
     return listData;
 };
 
-export const getNewsDetail = async (
+export const getBlogDetail = async (
     contentId: string,
     queries?: MicroCMSQueries
 ) => {
-    const detailData = await client.getListDetail<News>({
-        endpoint: "news",
+    const detailData = await client.getListDetail<Blog>({
+        endpoint: "blogs",
         contentId,
         queries,
     });
@@ -84,9 +101,9 @@ export const getCategoryDetail = async (
     return detailData;
 };
 
-export const getAllNewsList = async () => {
-    const listData = await client.getAllContents<News>({
-        endpoint: "news",
+export const getAllBlogsList = async () => {
+    const listData = await client.getAllContents<Blog>({
+        endpoint: "blogs",
     });
     return listData;
 };
@@ -94,6 +111,44 @@ export const getAllNewsList = async () => {
 export const getAllCategoryList = async () => {
     const listData = await client.getAllContents<Category>({
         endpoint: "categories",
+    });
+    return listData;
+};
+
+export const getBookmarksList = async (queries?: MicroCMSQueries) => {
+    const listData = await client.getList<Bookmark>({
+        endpoint: "bookmarks",
+        queries,
+        customRequestInit: {
+            cache: "no-store",
+        },
+    });
+    return listData;
+};
+
+export const getPortfolioList = async (queries?: MicroCMSQueries) => {
+    const listData = await client.getList<Portfolio>({
+        endpoint: "portfolio",
+        queries,
+    });
+    return listData;
+};
+
+export const getPortfolioDetail = async (
+    contentId: string,
+    queries?: MicroCMSQueries
+) => {
+    const detailData = await client.getListDetail<Portfolio>({
+        endpoint: "portfolio",
+        contentId,
+        queries,
+    });
+    return detailData;
+};
+
+export const getAllPortfolioList = async () => {
+    const listData = await client.getAllContents<Portfolio>({
+        endpoint: "portfolio",
     });
     return listData;
 };

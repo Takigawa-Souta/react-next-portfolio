@@ -16,10 +16,16 @@ export default function Menu() {
             <nav className={cx(styles.nav, isOpen && styles.open)}>
                 <ul className={styles.items}>
                     <li>
-                        <Link href="/news">ニュース</Link>
+                        <Link href="/about">自己紹介</Link>
                     </li>
                     <li>
-                        <Link href="/members">メンバー</Link>
+                        <Link href="/blog">ブログ</Link>
+                    </li>
+                    <li>
+                        <Link href="/portfolio">作品</Link>
+                    </li>
+                    <li>
+                        <Link href="/bookmarks">みんなのしおり</Link>
                     </li>
                     <li>
                         <Link href="/contact">お問い合わせ</Link>
@@ -35,8 +41,8 @@ export default function Menu() {
                     />
                 </button>
             </nav>
-            <button className={styles.button} onClick={open}>
-                <Image src="/menu.svg" alt="メニュー" width={24} height={24}/>
+            <button className={styles.bookmarkButton} onClick={open} aria-label="メニューを開く">
+                <span className={styles.bookmarkIcon}></span>
             </button>
         </div>
     );

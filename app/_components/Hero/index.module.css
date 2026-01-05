@@ -3,10 +3,83 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(0,0,0,0.5);
-    color: #fff;
+    background: linear-gradient(135deg, var(--color-bg-base) 0%, var(--color-bg-accent) 100%);
+    color: var(--color-text-base);
     overflow: hidden;
     padding: 100px 0;
+    min-height: 300px;
+}
+
+.flyingChars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+.char {
+    position: absolute;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    opacity: 0.08;
+    color: var(--color-text-base);
+    animation: flyAround 20s infinite ease-in-out;
+    animation-delay: calc(var(--char-index) * -2s);
+    
+    /* ランダムな初期位置 */
+    left: calc(10% + (var(--char-index) * 8%));
+    top: calc(20% + (var(--char-index) * 7%));
+}
+
+@keyframes flyAround {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 0.08;
+    }
+    25% {
+        transform: translate(30vw, -20vh) rotate(90deg) scale(1.2);
+        opacity: 0.12;
+    }
+    50% {
+        transform: translate(-10vw, 30vh) rotate(180deg) scale(0.8);
+        opacity: 0.05;
+    }
+    75% {
+        transform: translate(20vw, 10vh) rotate(270deg) scale(1.1);
+        opacity: 0.1;
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg) scale(1);
+        opacity: 0.08;
+    }
+}
+
+/* 各文字に異なる動きを追加 */
+.char:nth-child(odd) {
+    animation-duration: 25s;
+    animation-direction: reverse;
+}
+
+.char:nth-child(3n) {
+    animation-duration: 18s;
+}
+
+.char:nth-child(4n) {
+    animation-duration: 22s;
+    animation-direction: alternate;
+}
+
+.char:nth-child(5n) {
+    font-size: clamp(3rem, 7vw, 6rem);
+}
+
+.content {
+    position: relative;
+    z-index: 1;
 }
 
 .title {
@@ -40,16 +113,3 @@
     background-color: var(--color-text-unpainted);
 }
 
-.bgimg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 600px;
-    width: 100%;
-    object-fit: cover;
-    object-position: right;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: -1;
-}

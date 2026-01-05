@@ -12,7 +12,7 @@ type Props = {
 export default function BookmarksLayout({ children }: Props) {
     return (
         <>
-            <Hero title="Bookmarks" sub="みんなのしおり" />
+            <Hero title="Bookmarks" sub="みんなのしおり" backgroundText="BOOKMARKS" />
             <Sheet>{children}</Sheet>
         </>
     );

@@ -12,7 +12,7 @@ type Props = {
 export default function WorksLayout({ children }: Props) {
     return (
         <>
-            <Hero title="Works" sub="作品・知識・スキル" />
+            <Hero title="Works" sub="作品・知識・スキル" backgroundText="PORTFOLIO" />
             <Sheet>{children}</Sheet>
         </>
     );

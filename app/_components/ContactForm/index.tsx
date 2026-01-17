@@ -44,6 +44,25 @@ export default function ContactForm() {
                 </div>
             </div>
             <div className={styles.item}>
+                <label className={styles.label} htmlFor="hs_lead_status">
+                    リードステータス
+                </label>
+                <div className={styles.radioGroup} role="radiogroup" aria-labelledby="hs_lead_status">
+                    <label className={styles.radio}>
+                        <input type="radio" id="hs_lead_status_Company" name="hs_lead_status" value="Company" />
+                        企業様
+                    </label>
+                    <label className={styles.radio}>
+                        <input type="radio" id="hs_lead_status_Student" name="hs_lead_status" value="Student" />
+                        京都TECHの在校生それに準ずる学生様
+                    </label>
+                    <label className={styles.radio}>
+                        <input type="radio" id="hs_lead_status_Teacher" name="hs_lead_status" value="Teacher" />
+                        京都TECHもしくはそれに準ずる先生方
+                    </label>
+                </div>
+            </div>
+            <div className={styles.item}>
                 <label className={styles.label} htmlFor="company">
                     会社名
                 </label>

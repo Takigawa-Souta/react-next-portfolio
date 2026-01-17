@@ -9,6 +9,7 @@ export async function createContactData(_prevState: any, formData: FormData) {
     const rawFormData = {
         lastname: formData.get("lastname") as string,
         firstname: formData.get("firstname") as string,
+        hs_lead_status: formData.get("hs_lead_status") as string,
         company: formData.get("company") as string,
         email: formData.get("email") as string,
         message: formData.get("message") as string,
@@ -24,6 +25,12 @@ export async function createContactData(_prevState: any, formData: FormData) {
         return {
             status: "error",
             message: "名を入力してください",
+        };
+    }
+    if (!rawFormData.hs_lead_status) {
+        return {
+            status: "error",
+            message: "リードステータスを選択してください",
         };
     }
     if (!rawFormData.company) {
@@ -68,6 +75,11 @@ export async function createContactData(_prevState: any, formData: FormData) {
                         objectTypeId: "0-1",
                         name: "firstname",
                         value: rawFormData.firstname,
+                    },
+                    {
+                        objectTypeId: "0-1",
+                        name: "hs_lead_status",
+                        value: rawFormData.hs_lead_status,
                     },
                     {
                         objectTypeId: "0-1",

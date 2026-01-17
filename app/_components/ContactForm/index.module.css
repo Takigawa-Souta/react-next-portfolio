@@ -66,8 +66,75 @@
   margin-bottom: 8px;
 }
 
+/* radio group */
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--border, #ddd);
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.15s, background 0.15s;
+  background: var(--bg, transparent);
+}
+
+.radio input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border, #bbb);
+  border-radius: 50%;
+  display: inline-grid;
+  place-content: center;
+  position: relative;
+}
+
+.radio input[type="radio"]::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent, #0070f3);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.12s, transform 0.12s;
+}
+
+.radio input[type="radio"]:checked::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.radio input[type="radio"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,112,243,0.12);
+}
+
+.radio:hover {
+  border-color: var(--accent, #0070f3);
+  background: rgba(0,112,243,0.03);
+}
+
+/* テキストフィールドとの間隔調整 */
+.item .textfield {
+  margin-top: 0.5rem;
+}
+
 @media (max-width: 640px) {
   .success {
     text-align: left;
+  }
+  .radioGroup {
+    flex-direction: row;
   }
 }

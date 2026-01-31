@@ -80,6 +80,24 @@ export default function ContactForm() {
                 </label>
                 <textarea className={styles.textarea} id="message" name="message" />
             </div>
+            <div className={styles.item}>
+                <p className={styles.consentText}>
+                    私、瀧川颯太（以下私）は、お客さまのプライバシー保護に全力で取り組んでおり、いただいた個人情報はお客さまのアカウントを管理する目的および、お客さまが希望される当社の製品やサービスを提供する目的でのみ利用いたします。私から質問の回答、その他お客さまがご興味をお持ちのコンテンツに関し、お客さまにご連絡を差し上げる場合があります。私からご連絡を差し上げることにご同意いただける場合、以下のチェックボックスにチェックを入れてください。
+                </p>
+                <label className={styles.checkbox}>
+                    <input type="checkbox" name="consent_communication" value="agree" required />
+                    <span>私から他の連絡を受信することに同意します。<span className={styles.required}>（必須）</span></span>
+                </label>
+            </div>
+            <div className={styles.item}>
+                <p className={styles.consentText}>
+                    お客さまから求められた情報を提供するために、当社ではお客さまの個人情報を保管し、処理する必要があります。こうした目的で個人情報を保管することに同意いただける場合は、下のチェックボックスをオンにしてください。
+                </p>
+                <label className={styles.checkbox}>
+                    <input type="checkbox" name="consent" value="agree" required />
+                    <span>私が私の個人情報を保存して処理することを許可することに同意します。<span className={styles.required}>（必須）</span></span>
+                </label>
+            </div>
             <div className={styles.actions}>
                 {state.status === "error" && (
                     <p className={styles.error}>{state.message}</p>

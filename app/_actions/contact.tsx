@@ -13,6 +13,8 @@ export async function createContactData(_prevState: any, formData: FormData) {
         company: formData.get("company") as string,
         email: formData.get("email") as string,
         message: formData.get("message") as string,
+        consent: formData.get("consent") as string,
+        consent_communication: formData.get("consent_communication") as string,
     };
 
     if (!rawFormData.lastname) {
@@ -57,6 +59,23 @@ export async function createContactData(_prevState: any, formData: FormData) {
             message: "メッセージを入力してください",
         };
     }
+    if (!rawFormData.consent) {
+        return {
+            status: "error",
+            message: "個人情報の保管と処理への同意が必要です",
+        };
+    }
+
+    const legalConsentText = "私が私の個人情報を保存して処理することを許可することに同意します。";
+    
+    const communications: Array<any> = [];
+    if (rawFormData.consent_communication) {
+        communications.push({
+            value: true,
+            text: "私から他の連絡を受信することに同意します。",
+        });
+    }
+
     const result = await fetch(
         `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.HUBSPOT_PORTAL_ID}/${process.env.HUBSPOT_FORM_ID}`,
         {
@@ -97,6 +116,13 @@ export async function createContactData(_prevState: any, formData: FormData) {
                         value: rawFormData.message,
                     },
                 ],
+                legalConsentOptions: {
+                    consent: {
+                        consentToProcess: true,
+                        text: legalConsentText,
+                        communications,
+                    },
+                },
             }),
         }
     );

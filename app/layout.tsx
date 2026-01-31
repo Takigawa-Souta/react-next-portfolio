@@ -8,12 +8,12 @@ import ThemeToggle from "./_components/ThemeToggle";
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),
   title: {
-    template: "%s | ポートフォリオサイト",
-    default: "ポートフォリオサイト",
+    template: "%s | 瀧川颯太のポートフォリオサイト",
+    default: "瀧川颯太のポートフォリオサイト",
   },
   description: "個人のポートフォリオサイトです。ブログやプロジェクトを紹介しています。",
   openGraph: {
-    title: "ポートフォリオサイト",
+    title: "瀧川颯太のポートフォリオサイト",
     description: "個人のポートフォリオサイトです。ブログやプロジェクトを紹介しています。",
     images: ["/ogp.png"],
   },

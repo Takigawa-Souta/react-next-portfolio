@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Read me
 
-## Getting Started
+# react-next-portfolio
 
-First, run the development server:
+サイトURL: https://react-next-portfolio-red.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+文章
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 課題の紹介
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## TOP
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- ホームページです。それぞれのページに飛べるようにしています
+- 配置を見やすいように配置しています
 
-## Learn More
+## 自己紹介のページ
 
-To learn more about Next.js, take a look at the following resources:
+- 企業の方が見てわかりやすいようにしました。
+- 今後思いついたりしたら変更していくつもりです
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ブログ一覧ページ
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- ブログの一覧ページで作品のまとめページは別のところにしてます
+- カテゴリ別の並び替え機能をつけてます
 
-## Deploy on Vercel
+##　みんなのしおり
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- 感想を挟めるようにしました。
+- 管理できるバックグラウンドを今後作りたいです。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## ブログ詳細ページ
+
+- 日付、カテゴリで構成しています。
+- 教科書とほぼ同じで見やすいようにしています。
+
+# 一番見てほしいところ
+
+- みんなのしおり
+- 作品ページ
+- お問い合わせフォーム
+
+# 力を入れた点
+
+## 実装面
+
+- 管理しやすいお問合せができるようにしています。
+- 作品ページで見やすいように調整しています。
+- みんなのしおりで感想を挟めるようにしました
+
+## デザイン面
+
+- ダークモードを実装して見やすいようにしています
+- シンプルかつ見やすいデザインにしています
